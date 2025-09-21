@@ -19,8 +19,8 @@ public class CreateCourierTest {
     @Test
     @DisplayName("Проверка возможности создать курьера")
     public void createCourier(){
-        Courier courier = new Courier().setLogin("aKAdaqwdsahdjaskd").setPassword("12345").setFirstName("Pain");
-        Courier courierForLogin = new Courier().setLogin("aKAdaqwdsahdjaskd").setPassword("12345");
+        Courier courier = new Courier().setLogin("aKAdaqwdsahdjaskds").setPassword("12345").setFirstName("Pain");
+        Courier courierForLogin = new Courier().setLogin("aKAdaqwdsahdjaskds").setPassword("12345");
         Response response = apiClient.createCourier(courier);
         id = apiClient.loginCourier(courierForLogin).as(CourierId.class).getId();
         assertEquals(201, response.getStatusCode(),"Не получилось создать курьера");
@@ -30,8 +30,8 @@ public class CreateCourierTest {
     @Test
     @DisplayName("Проверка ошибки создания двух одинаковых курьеров")
     public void createTwoSameCouriers(){
-        Courier courier = new Courier().setLogin("aKAdaqwdsahdjaskd").setPassword("12345").setFirstName("Pain");
-        Courier courierForLogin = new Courier().setLogin("aKAdaqwdsahdjaskd").setPassword("12345");
+        Courier courier = new Courier().setLogin("aKAdaqwdsahdjaskds").setPassword("12345").setFirstName("Pain");
+        Courier courierForLogin = new Courier().setLogin("aKAdaqwdsahdjaskds").setPassword("12345");
         Response response1 = apiClient.createCourier(courier);
         id = apiClient.loginCourier(courierForLogin).as(CourierId.class).getId();
         Response response2 = apiClient.createCourier(courier);

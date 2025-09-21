@@ -19,8 +19,8 @@ public class LoginCourierTest {
     @Test
     @DisplayName("Проверка возможности логина курьера ")
     public void loginCourier(){
-        Courier courier = new Courier().setLogin("aKAdaqwdsahdjaskd").setPassword("12345").setFirstName("Pain");
-        Courier courierForLogin = new Courier().setLogin("aKAdaqwdsahdjaskd").setPassword("12345");
+        Courier courier = new Courier().setLogin("aKAdaqwdsahdjaskds").setPassword("12345").setFirstName("Pain");
+        Courier courierForLogin = new Courier().setLogin("aKAdaqwdsahdjaskds").setPassword("12345");
         Response response = apiClient.createCourier(courier);
         id = apiClient.loginCourier(courierForLogin).as(CourierId.class).getId();
         assertEquals(201, response.getStatusCode(),"Не получилось создать курьера для входа");

@@ -45,7 +45,7 @@ public class CreateOrderTest {
         OrderListRequest orderListRequest = new OrderListRequest();
         Response response = apiClient.getOrdersList(orderListRequest);
         assertEquals(200, response.getStatusCode(),"Не получилось получить список заказов");
-        assertFalse(response.getBody().asPrettyString().isEmpty());
+        assertTrue(response.getBody().asString().contains("orders"));
     }
 
 
