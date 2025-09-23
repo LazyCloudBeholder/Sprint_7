@@ -1,6 +1,7 @@
 import client.ApiClient;
 import io.restassured.response.Response;
 import model.Order;
+import model.OrderList;
 import model.OrderListRequest;
 import model.OrderTrack;
 import org.junit.jupiter.api.DisplayName;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CreateOrderTest {
     ApiClient apiClient = new ApiClient();
     OrderTrack track;
+    OrderList orderList;
 
 
 
@@ -44,8 +46,9 @@ public class CreateOrderTest {
     public void canGetOrderList(){
         OrderListRequest orderListRequest = new OrderListRequest();
         Response response = apiClient.getOrdersList(orderListRequest);
+        orderList = response.as(OrderList.class);
         assertEquals(200, response.getStatusCode(),"Не получилось получить список заказов");
-        assertTrue(response.getBody().asString().contains("orders"));
+        assertTrue(orderList.isNotEmpty());
     }
 
 
